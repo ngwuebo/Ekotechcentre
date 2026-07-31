@@ -80,7 +80,6 @@ export default function HeroSection() {
         <div className="hero-aspect">
           <Image src="/images/hero1.png" alt="Hero desktop background" fill className="hidden object-cover object-center sm:block" priority />
           <Image src="/images/hero2.png" alt="Hero mobile background" fill className="block object-cover object-center sm:hidden" priority />
-          <div className="absolute inset-0 bg-slate-950/25" />
           <div className="absolute inset-0 flex flex-col justify-between px-6 py-6 sm:px-10 sm:py-10">
             <div className="max-w-2xl text-left text-white">
               <p className="mb-4 text-sm uppercase tracking-[0.3em] text-emerald-300">Learn. Innovate. Empower.</p>
@@ -89,10 +88,10 @@ export default function HeroSection() {
                   <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} className="relative">
                     <motion.h1
                       key={heroPhrases[activePhrase]}
-                      initial={headlineAnimations[activePhrase % headlineAnimations.length].initial}
-                      animate={headlineAnimations[activePhrase % headlineAnimations.length].animate}
-                      exit={headlineAnimations[activePhrase % headlineAnimations.length].exit}
-                      transition={headlineAnimations[activePhrase % headlineAnimations.length].transition}
+                      initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -18 }}
+                      transition={{ duration: 0.9, ease: 'easeInOut' }}
                       className="mt-6 sm:mt-8 text-3xl font-extrabold leading-tight tracking-tight text-emerald-600 sm:text-5xl lg:text-6xl"
                     >
                       🚀 {heroPhrases[activePhrase]}
@@ -101,18 +100,18 @@ export default function HeroSection() {
                 </AnimatePresence>
               </div>
 
-              <div className="mt-6 flex items-center gap-3">
-                <a
-                  href="#enrol"
-                  onClick={(e) => { e.preventDefault(); document.getElementById('enrol')?.scrollIntoView({ behavior: 'smooth' }); }}
-                  className="inline-flex items-center gap-2 rounded-full bg-emerald px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-emerald-200/40"
-                >
-                  <Sparkles className="h-4 w-4 text-white" />
-                  Enrol Now
-                </a>
-                <span className="text-sm font-semibold uppercase tracking-[0.12em] text-white/80">Secure a spot for your child</span>
-              </div>
             </div>
+
+            <div className="flex justify-center pb-6 sm:pb-10">
+              <a
+                href="#enrol"
+                onClick={(e) => { e.preventDefault(); document.getElementById('enrol')?.scrollIntoView({ behavior: 'smooth' }); }}
+                className="inline-flex items-center justify-center rounded-full bg-emerald px-8 py-3 text-base font-semibold text-slate-950 shadow-[0_18px_60px_rgba(34,197,94,0.2)] ring-2 ring-emerald-300 transition hover:bg-emerald-400 sm:px-10 sm:text-lg"
+              >
+                ENROL MY CHILD — ₦100,000
+              </a>
+            </div>
+          </div>
           </div>
         </div>
       </section>
