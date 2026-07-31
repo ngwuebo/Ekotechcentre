@@ -31,8 +31,8 @@ export default function HowItWorks() {
               <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-royal/10 text-royal">
                 <step.icon className="h-5 w-5" />
               </div>
-              <p className="mt-5 font-semibold text-navy">Step {index + 1}</p>
-              <p className="mt-3 text-sm leading-7 text-slate-800">{step.label}</p>
+              <p className="mt-5 font-semibold text-slate-950">Step {index + 1}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-950">{step.label}</p>
             </motion.div>
           ))}
         </div>
