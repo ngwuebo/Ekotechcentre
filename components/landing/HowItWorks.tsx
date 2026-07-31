@@ -26,13 +26,16 @@ export default function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="rounded-[2rem] border border-slate-200/80 bg-white/95 p-6 shadow-sm"
+              className="relative rounded-xl border border-slate-200/80 bg-white/95 p-4 shadow-sm overflow-hidden"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-royal/10 text-royal">
-                <step.icon className="h-5 w-5" />
+              <div className="absolute -top-6 -right-6 h-24 w-24 rounded-3xl bg-royal/10 text-royal/30 pointer-events-none flex items-center justify-center">
+                <step.icon className="h-10 w-10 opacity-70" />
               </div>
-              <p className="mt-5 font-semibold text-slate-950">Step {index + 1}</p>
-              <p className="mt-3 text-sm leading-7 text-slate-950">{step.label}</p>
+
+              <div className="relative z-10">
+                <p className="mt-1 font-semibold text-slate-950">Step {index + 1}</p>
+                <p className="mt-2 text-sm leading-7 text-slate-950">{step.label}</p>
+              </div>
             </motion.div>
           ))}
         </div>
