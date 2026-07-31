@@ -18,22 +18,40 @@ const features = [
 ];
 
 const heroPhrases = [
-  'PREPARE YOUR CHILD FOR A TECH-DRIVEN FUTURE',
-  'DON’T LET YOUR CHILD GET LEFT BEHIND IN TECH',
-  'TURN SCREEN TIME INTO REAL DIGITAL SKILLS',
-  'GIVE YOUR CHILD A HEAD START IN TECHNOLOGY',
-  'RAISE A TECH-SMART, FUTURE-READY CHILD'
+  'Get a head start in digital literacy, ICT, and AI',
+  'From age 6 to secondary school and graduates',
+  'Turn screen time into career-ready skills',
+  'start your tech journey today',
+  'from beginner to tech creator'
 ];
 
 export default function HeroSection() {
   const [activePhrase, setActivePhrase] = useState(0);
+  const [desktopHero, setDesktopHero] = useState('/images/hero1.png');
+  const [mobileHero, setMobileHero] = useState('/images/hero2.png');
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActivePhrase((current) => (current + 1) % heroPhrases.length);
-    }, 5000);
+    }, 5005);
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => {
+      setDesktopHero('/images/hero3.png');
+    }, 7000);
+
+    return () => window.clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setMobileHero((current) => (current === '/images/hero2.png' ? '/images/hero4.png' : '/images/hero2.png'));
+    }, 6000);
+
+    return () => window.clearInterval(interval);
   }, []);
 
   const headlineAnimations = [
@@ -78,40 +96,62 @@ export default function HeroSection() {
     <>
       <section className="relative overflow-hidden px-0 pb-8 sm:px-0 sm:pb-10">
         <div className="hero-aspect">
-          <Image src="/images/hero1.png" alt="Hero desktop background" fill className="hidden object-cover object-center sm:block" priority />
-          <Image src="/images/hero2.png" alt="Hero mobile background" fill className="block object-cover object-center sm:hidden" priority />
-          <div className="absolute inset-0 flex flex-col justify-between px-6 py-6 sm:px-10 sm:py-10">
-            <div className="max-w-2xl text-left text-white">
-              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-emerald-300">Learn. Innovate. Empower.</p>
-              <div className="mt-2 overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} className="relative">
-                    <motion.h1
-                      key={heroPhrases[activePhrase]}
-                      initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -18 }}
-                      transition={{ duration: 0.9, ease: 'easeInOut' }}
-                      className="mt-6 sm:mt-8 text-3xl font-extrabold leading-tight tracking-tight text-emerald-600 sm:text-5xl lg:text-6xl"
-                    >
-                      🚀 {heroPhrases[activePhrase]}
-                    </motion.h1>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-            </div>
-
-            <div className="flex justify-center pb-6 sm:pb-10">
-              <a
-                href="#enrol"
-                onClick={(e) => { e.preventDefault(); document.getElementById('enrol')?.scrollIntoView({ behavior: 'smooth' }); }}
-                className="inline-flex items-center justify-center rounded-full bg-emerald px-8 py-3 text-base font-semibold text-slate-950 shadow-[0_18px_60px_rgba(34,197,94,0.2)] ring-2 ring-emerald-300 transition hover:bg-emerald-400 sm:px-10 sm:text-lg"
-              >
-                ENROL MY CHILD — ₦100,000
-              </a>
-            </div>
+          <Image src={desktopHero} alt="Hero desktop background" fill className="hidden object-cover object-center sm:block" priority />
+          <div className="absolute inset-0 sm:hidden">
+            <Image
+              src="/images/hero2.png"
+              alt="Hero mobile background"
+              fill
+              className="absolute inset-0 object-cover object-center transition-opacity duration-1000"
+              style={{ opacity: mobileHero === '/images/hero2.png' ? 1 : 0 }}
+              priority
+            />
+            <Image
+              src="/images/hero4.png"
+              alt="Hero mobile background"
+              fill
+              className="absolute inset-0 object-cover object-center transition-opacity duration-1000"
+              style={{ opacity: mobileHero === '/images/hero4.png' ? 1 : 0 }}
+              priority
+            />
           </div>
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-slate-950/15 backdrop-blur-xs" />
+            <div className="relative z-10 flex min-h-full flex-col justify-between px-6 py-6 sm:px-10 sm:py-10">
+              <div className="max-w-2xl text-left text-white">
+                <p className="mb-4 text-sm uppercase tracking-[0.3em] text-slate-200">Learn. Innovate. Empower.</p>
+                <div className="mt-2 overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} className="relative">
+                      <motion.h1
+                        key={heroPhrases[activePhrase]}
+                        initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -18 }}
+                        transition={{ duration: 0.9, ease: 'easeInOut' }}
+                        className="mt-3 sm:mt-8 max-w-[min(100%,40rem)] text-[clamp(1.85rem,5vw,3.75rem)] font-bold leading-tight tracking-tight text-white sm:text-[clamp(2.5rem,4vw,4.75rem)] lg:text-[clamp(3.25rem,3vw,5.5rem)]"
+                      >
+                        🚀 {heroPhrases[activePhrase]}
+                      </motion.h1>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <a
+                  href="#enrol"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('enrol')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
+                  style={{ backgroundColor: '#16a34a' }}
+                  className="relative z-20 inline-flex w-auto max-w-[280px] flex-col items-center justify-center rounded-full px-9 py-3 text-white shadow-[0_20px_60px_rgba(16,185,129,0.22)] ring-1 ring-white/10 transition duration-200 ease-out hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200 sm:px-10"
+                >
+                  <span className="text-sm font-semibold uppercase tracking-[0.12em]">ENROL NOW</span>
+                  <span className="mt-1 text-[12px] text-white/90">Book a spot for your child</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -188,10 +228,10 @@ export default function HeroSection() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
             <a
               href="#enrol"
-              onClick={(e) => { e.preventDefault(); document.getElementById('enrol')?.scrollIntoView({ behavior: 'smooth' }); }}
+              onClick={(e) => { e.preventDefault(); document.getElementById('enrol')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
               className="inline-flex items-center justify-center rounded-full bg-emerald px-8 py-3 text-base font-semibold text-slate-950 shadow-[0_18px_60px_rgba(34,197,94,0.2)] ring-2 ring-emerald-300 transition hover:bg-emerald-400 sm:px-10 sm:text-lg"
             >
-              ENROL MY CHILD — ₦100,000
+              BOOK A SPOT FOR YOUR CHILD
             </a>
           </div>
           <p className="text-sm text-white/70">🔒 Secure online payment via Paystack</p>
@@ -212,7 +252,7 @@ export default function HeroSection() {
             <Button
               variant="primary"
               className="w-full sm:w-auto px-8 py-4 text-base shadow-[0_24px_90px_rgba(34,197,94,0.22)] ring-2 ring-emerald-400/30"
-              onClick={() => document.getElementById('enrol')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('enrol')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
             >
               Enrol My Child
             </Button>
@@ -220,7 +260,7 @@ export default function HeroSection() {
               href="#enrol"
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById('enrol')?.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('enrol')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }}
               className="inline-flex w-full items-center justify-center rounded-full bg-slate-900 text-white !border-transparent px-8 py-4 text-base font-semibold shadow-[0_24px_90px_rgba(34,197,94,0.22)] ring-2 ring-emerald-400/30 transition hover:bg-slate-800 sm:w-auto sm:px-10 sm:text-lg"
             >

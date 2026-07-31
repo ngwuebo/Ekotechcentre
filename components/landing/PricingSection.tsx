@@ -39,17 +39,16 @@ const paymentDetails = [
 const countdownTarget = new Date('2026-08-06T00:00:00');
 
 function useCountdown() {
-  const [remaining, setRemaining] = useState(() => {
-    if (typeof window === 'undefined') return 0;
-    const diff = countdownTarget.getTime() - Date.now();
-    return diff > 0 ? diff : 0;
-  });
+  const [remaining, setRemaining] = useState(0);
 
   useEffect(() => {
-    const timer = window.setInterval(() => {
+    const updateRemaining = () => {
       const diff = countdownTarget.getTime() - Date.now();
       setRemaining(diff > 0 ? diff : 0);
-    }, 1000);
+    };
+
+    updateRemaining();
+    const timer = window.setInterval(updateRemaining, 1000);
 
     return () => window.clearInterval(timer);
   }, []);
@@ -90,32 +89,52 @@ export default function PricingSection() {
   };
 
   return (
-    <section id="enrol" className="px-6 pb-16 sm:px-8 lg:pb-20">
+    <section id="enrol" className="scroll-mt-24 px-6 pb-16 sm:px-8 lg:pb-20">
       <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-[1.5rem] border border-white/10 bg-slate-950/80 p-6 shadow-soft">
-          <div className="rounded-[1.5rem] bg-navy/95 p-6 text-white shadow-xl">
-            <p className="text-sm uppercase tracking-[0.35em] text-emerald-300">FULL 4-WEEK BOOTCAMP</p>
-            <h2 className="mt-4 text-3xl font-semibold text-white">Bootcamp enrolment & program highlights</h2>
-            <p className="mt-4 text-sm text-slate-300">A premium live online summer bootcamp for children aged 6–14+ focused on coding, robotics, AI, and digital creativity.</p>
-            <p className="mt-4 text-sm text-slate-300">Perfect for learners who want a standout summer experience with expert instruction and hands-on projects.</p>
-            <p className="mt-4 text-4xl font-semibold">₦100,000</p>
-            <p className="mt-2 text-sm text-slate-300">One-time payment • Certificate included</p>
-            <p className="mt-2 text-sm text-slate-300">Aug 5 – Sept 1, 2026</p>
-            <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
-              {paymentDetails.map((item) => (
-                <span key={item} className="inline-flex items-center gap-2 rounded-full bg-slate-800/30 px-3 py-2 text-xs font-medium text-slate-100">
-                  <ShieldCheck className="h-4 w-4 text-emerald" />
-                  <span className="whitespace-nowrap">{item}</span>
-                </span>
-              ))}
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="order-2 min-w-0 rounded-[1.5rem] border border-emerald-300/20 bg-gradient-to-br from-emerald-500/10 via-slate-950/90 to-slate-950/95 p-1 shadow-soft lg:order-1">
+          <div className="min-w-0 rounded-[1.5rem] bg-slate-950/95 p-6 text-white shadow-xl ring-1 ring-white/10">
+            <div className="mb-6 space-y-4">
+              <span className="inline-flex items-center rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-emerald-100">
+                FULL 4-WEEK BOOTCAMP
+              </span>
+              <div className="space-y-3">
+                <h2 className="text-3xl font-semibold tracking-tight text-white">Bootcamp enrolment & program highlights</h2>
+                <p className="max-w-2xl text-sm leading-6 text-slate-300">A premium live online summer bootcamp for children aged 6–14+ focused on coding, robotics, AI, and digital creativity.</p>
+                <p className="max-w-2xl text-sm leading-6 text-slate-300">Perfect for learners who want a standout summer experience with expert instruction and hands-on projects.</p>
+              </div>
             </div>
-            <div className="mt-6 rounded-[1.5rem] bg-white/10 p-4 text-center text-sm text-slate-200">
+
+            <div className="grid gap-4 lg:grid-cols-[0.72fr_1.28fr]">
+              <div className="rounded-[1.5rem] border border-emerald-300/20 bg-emerald-500/10 p-5">
+                <p className="text-xs uppercase tracking-[0.35em] text-emerald-300">Program fee</p>
+                <p className="mt-3 text-4xl font-semibold text-emerald-100">₦100,000</p>
+                <p className="mt-2 text-sm leading-6 text-slate-300">One-time payment • Certificate included</p>
+              </div>
+              <div className="rounded-[1.5rem] border border-white/10 bg-slate-900/95 p-5">
+                <p className="text-xs uppercase tracking-[0.35em] text-emerald-300">Summer cohort</p>
+                <p className="mt-3 text-xl font-semibold text-white">Aug 5 – Sept 1, 2026</p>
+                <p className="mt-2 text-sm leading-6 text-slate-400">Live instructor-led sessions, hands-on projects, progress reviews, certificate showcase.</p>
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-[1.5rem] bg-slate-900/95 p-6 ring-1 ring-emerald-300/10">
+              <h3 className="text-lg font-semibold text-white">What’s included</h3>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {paymentDetails.map((item) => (
+                  <div key={item} className="rounded-2xl border border-emerald-500/10 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-[1.5rem] bg-emerald-600/10 p-4 text-center text-sm text-emerald-100 ring-1 ring-emerald-300/20">
               <p className="font-semibold">{remaining ? formatCountdown(remaining) : 'Bootcamp Has Started'}</p>
             </div>
           </div>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-[1.5rem] border border-white/10 bg-slate-950/80 p-6 shadow-soft">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="order-1 rounded-[1.5rem] border border-white/10 bg-slate-950/80 p-6 shadow-soft lg:order-2">
           <div className="mb-8 space-y-3">
             <p className="text-sm uppercase tracking-[0.35em] text-emerald-300">Enrolment form</p>
             <h2 className="text-3xl font-semibold text-white">Reserve your child’s spot</h2>

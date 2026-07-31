@@ -33,7 +33,7 @@ export default function Navbar() {
             </span>
             08091822201
           </a>
-          <Button variant="primary" onClick={() => document.getElementById('enrol')?.scrollIntoView({ behavior: 'smooth' })}>
+          <Button variant="primary" onClick={() => document.getElementById('enrol')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
             Enrol Now
           </Button>
         </div>
@@ -56,7 +56,7 @@ export default function Navbar() {
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="fixed bottom-4 left-1/2 z-40 hidden w-[min(96%,420px)] -translate-x-1/2 rounded-full bg-navy px-4 py-3 text-white shadow-2xl md:hidden"
+        className="fixed bottom-4 left-1/2 z-40 flex w-[min(96%,420px)] -translate-x-1/2 rounded-full bg-navy px-4 py-3 text-white shadow-2xl md:hidden"
       >
         <div className="flex items-center justify-between">
           <span className="text-sm font-semibold">Ready for the bootcamp?</span>
