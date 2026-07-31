@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: 'Inter', sans-serif;
+  background: #0b1229;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: #0b1229;
+  color: #e2e8f0;
+}
+
+/* Hero utility: maintain image aspect and auto-fit */
+.hero-aspect {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 32%; /* default desktop-like 1920x620 ≈ 32% */
+  overflow: hidden;
+}
+
+@media (max-width: 639px) {
+  .hero-aspect {
+    padding-bottom: 107%; /* mobile approx 390x420 => 420/390 ≈ 1.077 -> 107% */
+  }
+}
+
+.hero-aspect img,
+.hero-aspect .next-image {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: #2563EB;
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
