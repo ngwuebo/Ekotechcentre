@@ -53,22 +53,7 @@ export default function Navbar() {
           </a>
         </div>
       </div>
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="fixed bottom-4 left-1/2 z-40 flex w-[min(96%,420px)] -translate-x-1/2 rounded-full bg-navy px-4 py-3 text-white shadow-2xl md:hidden"
-      >
-        <div className="flex items-center justify-between">
-          <span className="text-sm font-semibold">Ready for the bootcamp?</span>
-          <button
-            type="button"
-            className="inline-flex items-center gap-2 rounded-full bg-emerald px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-emerald/20"
-            onClick={() => document.getElementById('enrol')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Enrol <ShoppingCart className="h-4 w-4" />
-          </button>
-        </div>
-      </motion.div>
+
     </header>
   );
 }

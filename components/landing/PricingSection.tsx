@@ -139,7 +139,7 @@ export default function PricingSection() {
             </div>
             <div className="space-y-2">
               <p className="text-sm uppercase tracking-[0.35em] text-emerald-300">Enrolment form</p>
-              <h2 className="text-3xl font-semibold text-white">Reserve your child’s spot</h2>
+              <h2 className="text-3xl font-semibold text-white">Join a class now.</h2>
               <p className="max-w-xl text-sm leading-6 text-slate-400">Complete the short registration below to confirm your place in the premium summer bootcamp experience.</p>
             </div>
           </div>
