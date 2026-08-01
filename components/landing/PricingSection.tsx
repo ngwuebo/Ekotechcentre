@@ -93,7 +93,7 @@ export default function PricingSection() {
           <div className="min-w-0 rounded-[1.5rem] bg-slate-950/95 p-6 text-white shadow-xl ring-1 ring-white/10">
             <div className="mb-6 space-y-4">
               <span className="inline-flex items-center rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-emerald-100">
-                FULL 4-WEEK BOOTCAMP
+                FULL 4-WEEKS BOOTCAMP
               </span>
               <div className="space-y-3">
                 <h2 className="text-3xl font-semibold tracking-tight text-white">Bootcamp enrolment & program highlights</h2>
