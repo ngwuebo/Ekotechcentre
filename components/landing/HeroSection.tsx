@@ -182,7 +182,7 @@ export default function HeroSection() {
             transition={{ duration: 0.75, delay: 0.1 }}
             className="mx-auto max-w-2xl text-base leading-8 text-white/75 sm:text-lg"
           >
-            A <span className="font-semibold text-white">4-week live virtual technology bootcamp</span> designed for children and teenagers to learn coding, robotics, AI, digital creativity and other practical ICT skills through <span className="font-semibold text-white">live instructor-led Zoom classes and hands-on projects.</span>
+            A <span className="font-semibold text-white">4-weeks live virtual technology bootcamp</span> designed for children and teenagers to learn coding, robotics, AI, digital creativity and other practical ICT skills through <span className="font-semibold text-white">live instructor-led Zoom classes and hands-on projects.</span>
           </motion.p>
           <div className="grid gap-3 grid-cols-2 sm:grid-cols-2">
             <div className="flex items-center gap-4 rounded-2xl border border-slate-700/50 bg-slate-800/40 p-3 text-sm text-white">
