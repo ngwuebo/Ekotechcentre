@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Bolt, Feather, Globe2, HeartHandshake, Lightbulb, ShieldCheck } from 'lucide-react';
-import { Card } from '@/components/ui/Card';
+import Card from '@/components/ui/Card';
 
 const benefits = [
   { title: 'Coding', description: 'Hands-on lessons that introduce logic, loops, and creative systems.', icon: <Bolt className="h-5 w-5" /> },

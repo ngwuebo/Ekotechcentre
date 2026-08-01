@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Sparkles, Calendar, Users, Video, Award } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import Button from '@/components/ui/Button';
 import { useEffect, useState } from 'react';
 
 const features = [
@@ -39,11 +39,11 @@ export default function HeroSection() {
   }, []);
 
   useEffect(() => {
-    const timeout = window.setTimeout(() => {
-      setDesktopHero('/images/hero3.png');
+    const interval = window.setInterval(() => {
+      setDesktopHero((current) => (current === '/images/hero1.png' ? '/images/hero3.png' : '/images/hero1.png'));
     }, 7000);
 
-    return () => window.clearTimeout(timeout);
+    return () => window.clearInterval(interval);
   }, []);
 
   useEffect(() => {

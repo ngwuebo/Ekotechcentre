@@ -4,7 +4,7 @@ interface ButtonProps extends HTMLMotionProps<'button'> {
   variant?: 'primary' | 'secondary';
 }
 
-export function Button({ variant = 'primary', className = '', ...props }: ButtonProps) {
+export default function Button({ variant = 'primary', className = '', ...props }: ButtonProps) {
   return (
     <motion.button
       whileHover={{ y: -1, scale: 1.01 }}

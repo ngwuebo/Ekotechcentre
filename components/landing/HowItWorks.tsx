@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowDown, CreditCard, Mail, Send, Users, Zap } from 'lucide-react';
-import { SectionHeading } from '@/components/ui/SectionHeading';
+import SectionHeading from '@/components/ui/SectionHeading';
 
 const steps = [
   { label: 'Complete registration', icon: Send },

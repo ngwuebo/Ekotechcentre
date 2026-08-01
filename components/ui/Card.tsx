@@ -9,7 +9,7 @@ interface CardProps {
   descriptionClassName?: string;
 }
 
-export function Card({
+export default function Card({
   title,
   description,
   icon,

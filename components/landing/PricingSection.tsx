@@ -6,7 +6,7 @@ import { ShieldCheck } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from '@/components/ui/Button';
+import Button from '@/components/ui/Button';
 
 const paymentSchema = z.object({
   parentName: z.string().min(2, 'Enter parent name'),
@@ -17,9 +17,7 @@ const paymentSchema = z.object({
   dob: z.string().min(10, 'Enter date of birth'),
   gender: z.enum(['Male', 'Female', 'Other']),
   state: z.string().min(2, 'Enter state'),
-  school: z.string().min(2, 'Enter school'),
   track: z.enum(['Junior', 'Intermediate', 'Senior']),
-  source: z.string().min(2, 'How did you hear about us?'),
   agree: z.boolean().refine((value) => value, 'You must agree to terms')
 });
 
@@ -134,11 +132,16 @@ export default function PricingSection() {
           </div>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="order-1 rounded-[1.5rem] border border-white/10 bg-slate-950/80 p-6 shadow-soft lg:order-2">
-          <div className="mb-8 space-y-3">
-            <p className="text-sm uppercase tracking-[0.35em] text-emerald-300">Enrolment form</p>
-            <h2 className="text-3xl font-semibold text-white">Reserve your child’s spot</h2>
-            <p className="text-sm text-slate-400">Complete the form below to proceed with secure payment and registration.</p>
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="order-1 rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(16,24,40,0.98),rgba(2,6,23,0.98))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] ring-1 ring-white/5 lg:order-2">
+          <div className="mb-8 space-y-4">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex items-center rounded-full bg-emerald-500/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-emerald-200 ring-1 ring-emerald-300/20">Premium enrolment</span>
+            </div>
+            <div className="space-y-2">
+              <p className="text-sm uppercase tracking-[0.35em] text-emerald-300">Enrolment form</p>
+              <h2 className="text-3xl font-semibold text-white">Reserve your child’s spot</h2>
+              <p className="max-w-xl text-sm leading-6 text-slate-400">Complete the short registration below to confirm your place in the premium summer bootcamp experience.</p>
+            </div>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
@@ -195,11 +198,6 @@ export default function PricingSection() {
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="space-y-2 text-sm text-slate-200">
-                School
-                <input className="w-full rounded-3xl border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/20" {...register('school')} />
-                <p className="text-xs text-rose-500">{errors.school?.message}</p>
-              </label>
-              <label className="space-y-2 text-sm text-slate-200">
                 Select Age Track
                 <select className="w-full rounded-3xl border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/20" {...register('track')}>
                   <option>Junior</option>
@@ -208,26 +206,24 @@ export default function PricingSection() {
                 </select>
                 <p className="text-xs text-rose-500">{errors.track?.message}</p>
               </label>
+              <div className="rounded-3xl border border-emerald-300/20 bg-emerald-500/10 p-4 text-sm text-emerald-100">
+                <p className="text-[10px] uppercase tracking-[0.35em] text-emerald-300">Registration</p>
+                <p className="mt-2 font-semibold text-white">Secure your seat in one seamless step</p>
+                <p className="mt-2 text-slate-300">A guided premium checkout experience with live support and instant confirmation.</p>
+              </div>
             </div>
-            <div className="space-y-2 text-sm text-slate-200">
-              <label className="space-y-2 text-sm text-slate-200">
-                How did you hear about us?
-                <input className="w-full rounded-3xl border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/20" {...register('source')} />
-                <p className="text-xs text-rose-500">{errors.source?.message}</p>
-              </label>
-            </div>
-            <div className="flex items-start gap-3">
-              <label className="flex items-center gap-3 text-sm text-slate-700">
-                <input type="checkbox" className="h-4 w-4 rounded border-slate-300 text-royal focus:ring-royal" {...register('agree')} />
-                I agree to terms and data policy.
+            <div className="flex items-start gap-3 rounded-3xl border border-white/10 bg-slate-900/60 px-4 py-3">
+              <label className="flex items-center gap-3 text-sm text-slate-200">
+                <input type="checkbox" className="h-4 w-4 rounded border-slate-300 text-emerald focus:ring-emerald" {...register('agree')} />
+                I agree to the terms and privacy policy.
               </label>
             </div>
             <p className="text-xs text-rose-500">{errors.agree?.message}</p>
             <div className="space-y-2">
               <Button type="submit" className="w-full bg-emerald text-slate-950 hover:bg-emerald-400">Pay & Enrol Now</Button>
-              <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-3 text-sm text-slate-300">
+              <div className="rounded-2xl border border-emerald-300/20 bg-[linear-gradient(135deg,rgba(16,185,129,0.12),rgba(15,23,42,0.85))] p-4 text-sm text-slate-200">
                 <p className="font-semibold text-white">Paystack placeholder</p>
-                <p>Secure payment placeholder button will redirect to success page.</p>
+                <p className="mt-1 text-slate-300">Secure payment placeholder button will redirect to success page.</p>
               </div>
             </div>
             {submitted && <p className="text-sm text-emerald-400">Redirecting to success page…</p>}

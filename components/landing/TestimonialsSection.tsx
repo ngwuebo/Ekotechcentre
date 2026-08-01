@@ -49,7 +49,7 @@ export default function TestimonialsSection() {
         <div className="mb-10 flex flex-col gap-4 text-center lg:text-left">
           <p className="text-sm uppercase tracking-[0.28em] text-emerald-300">Testimonials</p>
           <div className="mx-auto max-w-3xl lg:mx-0">
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">30 parents and students love our premium bootcamp.</h2>
+            <h2 className="text-3xl font-semibold text-white sm:text-4xl">Parents and Students love our bootcamps.</h2>
             <p className="mt-3 text-base leading-7 text-slate-400">Swipe through selected reviews from families and learners who trusted our hands-on summer experience.</p>
           </div>
         </div>
