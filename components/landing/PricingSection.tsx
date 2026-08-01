@@ -89,7 +89,7 @@ export default function PricingSection() {
   return (
     <section id="enrol" className="scroll-mt-24 px-6 pb-16 sm:px-8 lg:pb-20">
       <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="order-2 min-w-0 rounded-[1.5rem] border border-emerald-300/20 bg-gradient-to-br from-emerald-500/10 via-slate-950/90 to-slate-950/95 p-1 shadow-soft lg:order-1">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="order-1 min-w-0 rounded-[1.5rem] border border-emerald-300/20 bg-gradient-to-br from-emerald-500/10 via-slate-950/90 to-slate-950/95 p-1 shadow-soft lg:order-1">
           <div className="min-w-0 rounded-[1.5rem] bg-slate-950/95 p-6 text-white shadow-xl ring-1 ring-white/10">
             <div className="mb-6 space-y-4">
               <span className="inline-flex items-center rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-emerald-100">
@@ -132,7 +132,7 @@ export default function PricingSection() {
           </div>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="order-1 rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(16,24,40,0.98),rgba(2,6,23,0.98))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] ring-1 ring-white/5 lg:order-2">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="order-2 rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(16,24,40,0.98),rgba(2,6,23,0.98))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] ring-1 ring-white/5 lg:order-2">
           <div className="mb-8 space-y-4">
             <div className="flex items-center gap-3">
               <span className="inline-flex items-center rounded-full bg-emerald-500/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-emerald-200 ring-1 ring-emerald-300/20">Premium enrolment</span>

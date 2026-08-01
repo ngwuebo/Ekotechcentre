@@ -8,19 +8,19 @@ const tracks = [
   {
     title: 'Junior',
     age: 'Age 6–8',
-    highlights: ['Learning through fun', 'Scratch', 'Digital creativity', 'Basic coding'],
+    highlights: ['Pictoblox', 'Scratch', '2D images', 'MS Suite', 'Virtual Robotics', 'AI Applications'],
     icon: <Award className="h-6 w-6" />
   },
   {
     title: 'Intermediate',
     age: 'Age 9–13',
-    highlights: ['HTML', 'CSS', 'Python', 'Game Design', 'AI', 'Learn French as you go'],
+    highlights: ['Basic Coding Operations', '3D Modeling', 'Canva Graphics', 'Games Design (Scratch, Roblox)', 'Cyber Security', 'AI for writing and design', 'Introduction to Socio-media', 'Robotics - Robot car'],
     icon: <Cpu className="h-6 w-6" />
   },
   {
     title: 'Senior',
     age: 'Age 14+',
-    highlights: ['Python', 'Cybersecurity', 'Power BI', 'Web Development', 'AI', 'Career preparation'],
+    highlights: ['Programming - CSS, HTML', 'Data Science & Analytics', 'Cyber Security', 'Digital Branding', 'Digital Marketing', 'Web design', 'Graphics design', 'AI Storytelling', 'Autonomous Robotics'],
     icon: <Layers className="h-6 w-6" />
   }
 ];
