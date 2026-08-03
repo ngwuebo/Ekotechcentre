@@ -27,28 +27,14 @@ const heroPhrases = [
 
 export default function HeroSection() {
   const [activePhrase, setActivePhrase] = useState(0);
-  const [desktopHero, setDesktopHero] = useState('/images/hero1.png');
-  const [mobileHero, setMobileHero] = useState('/images/hero2.png');
+  const [desktopHero, setDesktopHero] = useState(0);
+  const [mobileHero, setMobileHero] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const interval = window.setInterval(() => {
       setActivePhrase((current) => (current + 1) % heroPhrases.length);
-    }, 5005);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setDesktopHero((current) => (current === '/images/hero1.png' ? '/images/hero3.png' : '/images/hero1.png'));
-    }, 7000);
-
-    return () => window.clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setMobileHero((current) => (current === '/images/hero2.png' ? '/images/hero4.png' : '/images/hero2.png'));
+      setDesktopHero((current) => (current === 0 ? 1 : 0));
+      setMobileHero((current) => (current === 0 ? 1 : 0));
     }, 6000);
 
     return () => window.clearInterval(interval);
@@ -96,22 +82,39 @@ export default function HeroSection() {
     <>
       <section className="relative overflow-hidden px-0 pb-8 sm:px-0 sm:pb-10">
         <div className="hero-aspect">
-          <Image src={desktopHero} alt="Hero desktop background" fill className="hidden object-cover object-center sm:block" priority />
+          <div className="absolute inset-0 hidden sm:block">
+            <Image
+              src="/images/hero1.png"
+              alt="Hero desktop background"
+              fill
+              className="absolute inset-0 object-cover object-center transition-opacity duration-1000 ease-in-out"
+              style={{ opacity: desktopHero === 0 ? 1 : 0 }}
+              priority
+            />
+            <Image
+              src="/images/hero3.png"
+              alt="Hero desktop background"
+              fill
+              className="absolute inset-0 object-cover object-center transition-opacity duration-1000 ease-in-out"
+              style={{ opacity: desktopHero === 1 ? 1 : 0 }}
+              priority
+            />
+          </div>
           <div className="absolute inset-0 sm:hidden">
             <Image
               src="/images/hero2.png"
               alt="Hero mobile background"
               fill
-              className="absolute inset-0 object-cover object-center transition-opacity duration-1000"
-              style={{ opacity: mobileHero === '/images/hero2.png' ? 1 : 0 }}
+              className="absolute inset-0 object-cover object-center transition-opacity duration-1000 ease-in-out"
+              style={{ opacity: mobileHero === 0 ? 1 : 0 }}
               priority
             />
             <Image
               src="/images/hero4.png"
               alt="Hero mobile background"
               fill
-              className="absolute inset-0 object-cover object-center transition-opacity duration-1000"
-              style={{ opacity: mobileHero === '/images/hero4.png' ? 1 : 0 }}
+              className="absolute inset-0 object-cover object-center transition-opacity duration-1000 ease-in-out"
+              style={{ opacity: mobileHero === 1 ? 1 : 0 }}
               priority
             />
           </div>
