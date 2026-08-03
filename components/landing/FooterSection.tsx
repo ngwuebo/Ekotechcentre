@@ -2,7 +2,7 @@ import { ArrowRight, Facebook, Instagram, Linkedin, Mail, Phone, MessageSquare }
 
 export default function FooterSection() {
   return (
-    <footer className="bg-slate-950 px-6 py-8 text-white sm:px-10 sm:py-10">
+    <footer className="bg-slate-950 px-3 py-8 text-white sm:px-10 sm:py-10">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div className="space-y-4">

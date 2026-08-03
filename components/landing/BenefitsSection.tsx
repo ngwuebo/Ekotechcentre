@@ -13,7 +13,7 @@ const frenchHighlights = [
 
 export default function BenefitsSection() {
   return (
-    <section className="px-6 pb-16 sm:px-10 lg:pb-24">
+    <section className="px-3 pb-16 sm:px-10 lg:pb-24">
       <div className="mx-auto max-w-6xl">
         <div className="overflow-hidden rounded-[2rem] border border-emerald-300/15 bg-[linear-gradient(145deg,rgba(16,185,129,0.12),rgba(15,23,42,0.98))] shadow-[0_30px_90px_rgba(8,102,52,0.18)]">
           <div className="grid gap-0 lg:grid-cols-[1.02fr_0.98fr]">

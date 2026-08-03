@@ -27,7 +27,7 @@ const tracks = [
 
 export default function TracksSection() {
   return (
-    <section className="px-6 pb-16 sm:px-10 lg:pb-24">
+    <section className="px-3 pb-16 sm:px-10 lg:pb-24">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 text-center">
           <p className="text-sm uppercase tracking-[0.28em] text-slate-500">Age tracks</p>

@@ -234,7 +234,7 @@ export default function HeroSection() {
               BOOK A SPOT FOR YOUR CHILD
             </a>
           </div>
-          <p className="text-sm text-white/70">🔒 Secure online payment via Paystack</p>
+          <p className="text-sm text-white/70">🔒 Secure payment via bank transfer</p>
         </div>
       </section>
 

@@ -44,7 +44,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="bg-slate-950 px-6 pt-16 pb-14 sm:px-10 sm:pt-20 lg:pb-24">
+    <section className="bg-slate-950 px-3 pt-16 pb-14 sm:px-10 sm:pt-20 lg:pb-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 flex flex-col gap-4 text-center lg:text-left">
           <p className="text-sm uppercase tracking-[0.28em] text-emerald-300">Testimonials</p>

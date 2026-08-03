@@ -36,7 +36,7 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <section className="bg-slate-950 px-6 py-16 sm:px-10 sm:py-20 lg:py-24">
+    <section className="bg-slate-950 px-3 py-16 sm:px-10 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 rounded-[2rem] border border-emerald-300/10 bg-slate-900/95 p-8 shadow-[0_30px_80px_rgba(8,102,52,0.18)] sm:p-12">
           <div className="mb-8 text-center">

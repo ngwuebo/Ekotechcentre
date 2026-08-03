@@ -11,7 +11,7 @@ const stats = [
 
 export default function SocialProof() {
   return (
-    <section className="px-6 pb-16 sm:px-10 lg:pb-24">
+    <section className="px-3 pb-16 sm:px-10 lg:pb-24">
       <div className="mx-auto max-w-6xl rounded-[2rem] bg-slate-950/90 p-8 shadow-soft backdrop-blur-xl sm:p-10">
         <div className="flex flex-col items-center gap-6 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-4 py-2 text-sm text-white shadow-lg shadow-emerald-500/20">

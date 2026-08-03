@@ -6,7 +6,7 @@ import SectionHeading from '@/components/ui/SectionHeading';
 
 const steps = [
   { label: 'Complete registration', icon: Send },
-  { label: 'Pay securely with Paystack', icon: CreditCard },
+  { label: 'Pay securely by bank transfer', icon: CreditCard },
   { label: 'Receive confirmation email', icon: Mail },
   { label: 'Receive Zoom details', icon: Users },
   { label: 'Join orientation', icon: Zap },
@@ -15,7 +15,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="px-6 pb-16 sm:px-10 lg:pb-24">
+    <section className="px-3 pb-16 sm:px-10 lg:pb-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeading title="How it works" subtitle="Step-by-step process" />
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

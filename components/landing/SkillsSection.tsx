@@ -19,7 +19,7 @@ const skillGroups = [
 
 export default function SkillsSection() {
   return (
-    <section className="bg-slate-950 px-6 pb-16 pt-20 sm:px-10 lg:pb-24">
+    <section className="bg-slate-950 px-3 pb-16 pt-20 sm:px-10 lg:pb-24">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 text-center">
           <p className="text-sm uppercase tracking-[0.32em] text-emerald-300">Skills grid</p>

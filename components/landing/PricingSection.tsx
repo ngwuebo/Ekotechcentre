@@ -64,13 +64,30 @@ function formatCountdown(ms: number) {
   return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
+function calculateAge(dateOfBirth: string) {
+  if (!dateOfBirth) return 'N/A';
+
+  const birthDate = new Date(dateOfBirth);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age -= 1;
+  }
+
+  return `${age} years`;
+}
+
 export default function PricingSection() {
   const remaining = useCountdown();
   const [submitted, setSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors }
   } = useForm<PaymentFormValues>({
     resolver: zodResolver(paymentSchema),
@@ -83,11 +100,39 @@ export default function PricingSection() {
 
   const onSubmit = () => {
     setSubmitted(true);
-    window.location.href = '/success';
+  };
+
+  const copyAccountDetails = async () => {
+    const accountDetails = `Bank name: STERLING BANK\nAccount name: EKOTECH COACHING HUB\nAccount Number: 0148583020`;
+
+    try {
+      await navigator.clipboard.writeText(accountDetails);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      setCopied(false);
+    }
+  };
+
+  const handlePaid = () => {
+    const values = getValues();
+    const message = [
+      `Parent name: ${values.parentName}`,
+      `Student name: ${values.studentName}`,
+      `Email: ${values.email}`,
+      `Age: ${calculateAge(values.dob)}`,
+      `Gender: ${values.gender}`,
+      `Age track: ${values.track}`,
+      'Amount: ₦100,000',
+      'Payment status: I have paid'
+    ].join('\n');
+
+    const whatsappUrl = `https://wa.me/2348066604664?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="enrol" className="scroll-mt-24 px-6 pb-16 sm:px-8 lg:pb-20">
+    <section id="enrol" className="scroll-mt-24 px-3 pb-16 sm:px-8 lg:pb-20">
       <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="order-1 min-w-0 rounded-[1.5rem] border border-emerald-300/20 bg-gradient-to-br from-emerald-500/10 via-slate-950/90 to-slate-950/95 p-1 shadow-soft lg:order-1">
           <div className="min-w-0 rounded-[1.5rem] bg-slate-950/95 p-6 text-white shadow-xl ring-1 ring-white/10">
@@ -221,12 +266,53 @@ export default function PricingSection() {
             <p className="text-xs text-rose-500">{errors.agree?.message}</p>
             <div className="space-y-2">
               <Button type="submit" className="w-full bg-emerald text-slate-950 hover:bg-emerald-400">Pay & Enrol Now</Button>
-              <div className="rounded-2xl border border-emerald-300/20 bg-[linear-gradient(135deg,rgba(16,185,129,0.12),rgba(15,23,42,0.85))] p-4 text-sm text-slate-200">
-                <p className="font-semibold text-white">Paystack placeholder</p>
-                <p className="mt-1 text-slate-300">Secure payment placeholder button will redirect to success page.</p>
-              </div>
             </div>
-            {submitted && <p className="text-sm text-emerald-400">Redirecting to success page…</p>}
+            {submitted && (
+              <div className="space-y-4">
+                <p className="rounded-2xl border border-emerald-300/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
+                  Copy the account details below and pay via transfer. Payment is secure.
+                </p>
+                <div className="rounded-[1.75rem] border border-emerald-300/20 bg-[linear-gradient(135deg,rgba(16,185,129,0.14),rgba(15,23,42,0.96))] p-5 text-sm text-slate-100 shadow-soft">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="text-slate-300">Bank name</span>
+                      <span className="font-semibold text-white">STERLING BANK</span>
+                    </div>
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="text-slate-300">Account name</span>
+                      <span className="font-semibold text-white">EKOTECH COACHING HUB</span>
+                    </div>
+                    <div className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-slate-900/70 px-3 py-2">
+                      <span className="text-slate-300">Account Number</span>
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold text-white">0148583020</span>
+                        <button
+                          type="button"
+                          onClick={copyAccountDetails}
+                          className="rounded-full bg-emerald px-3 py-1 text-xs font-semibold text-slate-950 transition hover:bg-emerald-300"
+                        >
+                          {copied ? 'Copied' : 'Copy account'}
+                        </button>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-slate-900/70 px-3 py-2">
+                      <span className="text-slate-300">Amount</span>
+                      <span className="font-semibold text-white">₦100,000</span>
+                    </div>
+                  </div>
+                  <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="text-xs text-slate-300">Click here after successful payment</div>
+                    <button
+                      type="button"
+                      onClick={handlePaid}
+                      className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+                    >
+                      I have paid
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </form>
         </motion.div>
       </div>

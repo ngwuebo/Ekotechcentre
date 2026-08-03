@@ -6,7 +6,7 @@ import { MessageCircle, Users, Video, Sparkles } from 'lucide-react';
 
 export default function ClassPreview() {
   return (
-    <section className="px-6 pb-16 sm:px-10 lg:pb-24">
+    <section className="px-3 pb-16 sm:px-10 lg:pb-24">
       <div className="mx-auto max-w-6xl rounded-[2rem] bg-gradient-to-br from-white via-slate-50 to-royal/5 p-6 shadow-soft sm:p-10">
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <div>
