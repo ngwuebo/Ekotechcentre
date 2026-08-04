@@ -9,13 +9,13 @@ export const metadata: Metadata = {
     title: 'EkoTech Coaching Centre | Premium Live Online Bootcamp',
     description: 'Premium 4-weeks live online technology bootcamp for ages 6–14+ with live Zoom classes, coding, robotics, AI, projects, certificate, and WhatsApp support.',
     type: 'website',
-    images: [{ url: '/images/text1.png', width: 1200, height: 630 }]
+    images: [{ url: '/images/text2.png', width: 1200, height: 630 }]
   },
   twitter: {
     card: 'summary_large_image',
     title: 'EkoTech Coaching Centre',
     description: 'Premium live online bootcamp for ages 6–14+ with live Zoom classes and hands-on projects.',
-    images: '/images/text1.png'
+    images: '/images/text2.png'
   }
 };
 

@@ -1,4 +1,5 @@
-import { ArrowRight, Facebook, Instagram, Linkedin, Mail, Phone, MessageSquare } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Mail, Phone, MessageSquare } from 'lucide-react';
 
 export default function FooterSection() {
   return (
@@ -41,15 +42,26 @@ export default function FooterSection() {
                 <MessageSquare className="h-4 w-4" />
                 WhatsApp available
               </div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-slate-900/70 px-3 py-2 text-sm text-slate-200">
-                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-200">✓</span>
-                CAC Registered
+              <div className="inline-flex items-center gap-3 rounded-full border border-emerald-400/20 bg-slate-900/75 px-3 py-2 shadow-[0_0_25px_rgba(16,185,129,0.12)]">
+                <div className="relative h-12 w-12 overflow-hidden rounded-full border border-white/10 bg-white/5">
+                  <Image
+                    src="/images/cac.jpeg"
+                    alt="CAC Approved"
+                    width={48}
+                    height={48}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+                <div className="flex flex-col leading-none">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.35em] text-emerald-200">CAC</span>
+                  <span className="mt-1 text-xs font-medium text-white">Approved</span>
+                </div>
               </div>
             </div>
 
             <p className="flex items-center gap-3 text-sm text-slate-200">
               <Mail className="h-4 w-4 text-emerald-300" />
-              hello@ekotech.ng
+              ekotechcentre@gmail.com
             </p>
           </div>
         </div>

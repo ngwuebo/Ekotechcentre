@@ -34,7 +34,7 @@ const paymentDetails = [
   'WhatsApp support'
 ];
 
-const countdownTarget = new Date('2026-08-06T00:00:00');
+const countdownTarget = new Date('2026-08-11T00:00:00');
 
 function useCountdown() {
   const [remaining, setRemaining] = useState(0);
